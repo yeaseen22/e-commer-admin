@@ -47,7 +47,8 @@
 import React, { useEffect } from "react";
 import { Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../features/cutomers/customerSlice";
+// import { getUsers } from "../features/cutomers/customerSlice";
+import {getUsers} from "../features/customers/customerSlice";
 const columns = [
   {
     title: "SNo",
