@@ -1,10 +1,11 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect } from "react";
 import { Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
-import { getOrderByUser, getOrders } from "../features/auth/authSlice";
+import { getOrderByUser } from "../features/auth/authSlice";
 const columns = [
     {
         title: "SNo",

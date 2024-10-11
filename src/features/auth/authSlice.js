@@ -13,19 +13,19 @@ const initialState = {
   message: "",
 };
 export const login = createAsyncThunk(
-  "auth/login",
+  "auth/admin-login",
   async (userData, thunkAPI) => {
     try {
       return await authService.login(userData);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.response?.data?.message || "Failed to fetch orders");
     }
   }
 );
 
-export const getOrders = createAsyncThunk(
+export const getOrdersData = createAsyncThunk(
   "order/get-orders",
-  async (thunkAPI) => {
+  async (_,thunkAPI) => {
     try {
       return await authService.getOrders();
     } catch (error) {
@@ -37,7 +37,7 @@ export const getOrderByUser = createAsyncThunk(
   "order/get-order",
   async (id, thunkAPI) => {
     try {
-      return await authService.getOrder(id);
+      return await authService.getOrderBy(id);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -66,17 +66,17 @@ export const authSlice = createSlice({
         state.message = action.error;
         state.isLoading = false;
       })
-      .addCase(getOrders.pending, (state) => {
+      .addCase(getOrdersData.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getOrders.fulfilled, (state, action) => {
+      .addCase(getOrdersData.fulfilled, (state, action) => {
         state.isError = false;
         state.isLoading = false;
         state.isSuccess = true;
         state.orders = action.payload;
         state.message = "success";
       })
-      .addCase(getOrders.rejected, (state, action) => {
+      .addCase(getOrdersData.rejected, (state, action) => {
         state.isError = true;
         state.isSuccess = false;
         state.message = action.error;

@@ -19,7 +19,6 @@
 // import { useNavigate, Link } from 'react-router-dom';
 // import { Outlet } from 'react-router-dom';
 
-
 // const MainLayout = () => {
 //   const [collapsed, setCollapsed] = useState(false);
 //   const {
@@ -182,7 +181,7 @@
 //                   alt=""
 //                 />
 //               </div>
-              
+
 //               <div
 //                 role="button"
 //                 id="dropdownMenuLink"
@@ -273,7 +272,9 @@ const MainLayout = () => {
           mode="inline"
           defaultSelectedKeys={[""]}
           onClick={({ key }) => {
-            if (key == "signout") {
+            if (key === "signout") {
+              // Handle signout logic here
+              console.log("Signout clicked");
             } else {
               navigate(key);
             }
@@ -297,10 +298,10 @@ const MainLayout = () => {
                 {
                   key: "product",
                   icon: <AiOutlineShoppingCart className="fs-4" />,
-                  label: "Add Product",
+                  label: "Product",
                 },
                 {
-                  key: "list-product",
+                  key: "product-list",
                   icon: <AiOutlineShoppingCart className="fs-4" />,
                   label: "Product List",
                 },
@@ -310,7 +311,7 @@ const MainLayout = () => {
                   label: "Brand",
                 },
                 {
-                  key: "list-brand",
+                  key: "brand-list",
                   icon: <SiBrandfolder className="fs-4" />,
                   label: "Brand List ",
                 },
@@ -320,7 +321,7 @@ const MainLayout = () => {
                   label: "Category",
                 },
                 {
-                  key: "list-category",
+                  key: "category-list",
                   icon: <BiCategoryAlt className="fs-4" />,
                   label: "Category List",
                 },
@@ -330,7 +331,7 @@ const MainLayout = () => {
                   label: "Color",
                 },
                 {
-                  key: "list-color",
+                  key: "color-list",
                   icon: <AiOutlineBgColors className="fs-4" />,
                   label: "Color List",
                 },

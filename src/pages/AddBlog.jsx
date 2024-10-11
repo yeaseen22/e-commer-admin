@@ -64,6 +64,7 @@
 
 // export default AddBlog
 
+// eslint-disable-next-line no-unused-vars
 import { React, useEffect, useState } from "react";
 import CustomInput from "../components/CustomInput";
 import ReactQuill from "react-quill";
@@ -114,11 +115,13 @@ const Addblog = () => {
     } else {
       dispatch(resetState());
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getBlogId]);
 
   useEffect(() => {
     dispatch(resetState());
     dispatch(getCategories());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -132,6 +135,7 @@ const Addblog = () => {
     if (isError) {
       toast.error("Something Went Wrong!");
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSuccess, isError, isLoading]);
 
   const img = [];
@@ -144,6 +148,7 @@ const Addblog = () => {
   console.log(img);
   useEffect(() => {
     formik.values.images = img;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blogImages]);
 
   const formik = useFormik({
@@ -230,7 +235,7 @@ const Addblog = () => {
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
                     <p>
-                      Drag 'n' drop some files here, or click to select files
+                      Drag and drop some files here, or click to select files
                     </p>
                   </div>
                 </section>

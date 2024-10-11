@@ -48,6 +48,7 @@
 
 
 
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect } from "react";
 import { Table } from "antd";
 import { BiEdit } from "react-icons/bi";
@@ -107,12 +108,14 @@ const Productlist = () => {
       price: `${productState[i].price}`,
       action: (
         <>
-          <Link to="/" className=" fs-3 text-danger">
+         <div className="d-flex flex-column justify-content-center align-items-center mr-2">
+         <Link to="/" className=" fs-3 text-danger">
             <BiEdit />
           </Link>
-          <Link className="ms-3 fs-3 text-danger" to="/">
+          <Link className="ms-1 fs-3 text-danger" to="/">
             <AiFillDelete />
           </Link>
+         </div>
         </>
       ),
     });
@@ -120,7 +123,7 @@ const Productlist = () => {
   console.log(data1);
   return (
     <div>
-      <h3 className="mb-4 title">Products</h3>
+      <h3 className="mb-4 title">Products List</h3>
       <div>
         <Table columns={columns} dataSource={data1} />
       </div>

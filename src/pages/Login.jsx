@@ -40,6 +40,7 @@
 
 
 
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect } from "react";
 import CustomInput from "../components/CustomInput";
 import { Link, useNavigate } from "react-router-dom";
@@ -78,6 +79,7 @@ const Login = () => {
     } else {
       navigate("");
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, isError, isSuccess, isLoading]);
   return (
     <div className="py-5" style={{ background: "#ffd333", minHeight: "100vh" }}>
