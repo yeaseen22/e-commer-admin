@@ -1,39 +1,3 @@
-// import { React, useEffect } from "react";
-// import CustomInput from "../Components/CustomInput";
-
-
-// const AddBrand = () => {
-
-//   return (
-//     <div>
-//       <h3 className="mb-4  title">
-//          Brand
-//       </h3>
-//       <div>
-//         <form action="">
-//           <CustomInput
-//             type="color"
-//             name="title"
-//             label="Enter Brand"
-//             id="blogcat"
-//           />
-//           <div className="error">
-            
-//           </div>
-//           <button
-//             className="btn btn-success border-0 rounded-3 my-5"
-//             type="submit"
-//           >
-//              Add Brand
-//           </button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AddBrand;
-
 
 import { React, useEffect } from "react";
 import CustomInput from "../components/CustomInput";

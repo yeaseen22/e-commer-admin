@@ -105,7 +105,7 @@ import {
   resetState,
   updateABlog,
 } from "../features/blogs/blogSlice";
-import { getCategories } from "../features/bcategory/bcategorySlice";
+import { createNewblogCat, getCategories } from "../features/bcategory/bcategorySlice";
 
 let schema = yup.object().shape({
   title: yup.string().required("Title is Required"),
@@ -185,7 +185,7 @@ const Addblog = () => {
         dispatch(updateABlog(data));
         dispatch(resetState());
       } else {
-        dispatch(createBlogs(values));
+        dispatch(createNewblogCat(values));
         formik.resetForm();
         setTimeout(() => {
           dispatch(resetState());

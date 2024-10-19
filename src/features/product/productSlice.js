@@ -16,6 +16,8 @@ export const createProducts = createAsyncThunk(
   async (productData, thunkAPI) => {
     try {
       return await productService.createProduct(productData);
+      console.log('slice productdata',productData);
+      
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -58,7 +60,7 @@ export const productSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.createdProduct = action.payload;
+        state.products = action.payload;
       })
       .addCase(createProducts.rejected, (state, action) => {
         state.isLoading = false;

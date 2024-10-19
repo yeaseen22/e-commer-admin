@@ -11,9 +11,10 @@ const login = async (user) => {
   return response.data;
 };
 const getOrders = async () => {
-  const response = await axios.get(`${base_url}user/get-orders`, config);
-  console.log('order store', getOrders)
-  console.log(response.data);
+  const response = await axios.get(`${base_url}user/get-allorders`, config);
+  // if (response.data) {
+  //   localStorage.setItem("orders", JSON.stringify(response.data));
+  // }
   
   return response.data;
 };

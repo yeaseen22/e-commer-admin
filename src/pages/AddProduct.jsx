@@ -31,20 +31,19 @@ let schema = yup.object().shape({
 });
 
 const Addproduct = () => {
-  const dispatch = useDispatch();
-  // eslint-disable-next-line no-unused-vars
+  const dispatch = useDispatch()
   const navigate = useNavigate();
-  // eslint-disable-next-line no-undef
+  
   const [color, setColor] = useState([]);
-  // eslint-disable-next-line no-unused-vars, no-undef
+  
   const [images, setImages] = useState([]);
   console.log(color);
-  // eslint-disable-next-line no-undef
+ 
   useEffect(() => {
     dispatch(getBrands());
     dispatch(getCategories());
     dispatch(getColors());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+   
   }, []);
 
   const brandState = useSelector((state) => state.brand.brands);
@@ -99,6 +98,8 @@ const Addproduct = () => {
     },
     validationSchema: schema,
     onSubmit: (values) => {
+      console.log("Form Values: ", values);  // Log the values here
+
       dispatch(createProducts(values));
       formik.resetForm();
       setColor(null);
@@ -272,7 +273,7 @@ const Addproduct = () => {
                     type="button"
                     onClick={() => dispatch(delImg(i.public_id))}
                     className="btn-close position-absolute"
-                    style={{ top: "10px", right: "10px" }}
+                    style={{ top: "1px", right: "-25px" }}
                   ></button>
                   <img src={i.url} alt="" width={200} height={200} />
                 </div>
