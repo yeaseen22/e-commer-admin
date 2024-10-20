@@ -122,7 +122,7 @@ const Enquiries = () => {
     dispatch(resetState());
     dispatch(getEnquiries());
   }, []);
-  const enqState = useSelector((state) => state.enquiry.enquiries);
+  const enqState = useSelector((state) => state?.enquiry?.enquiries);
   const data1 = [];
   for (let i = 0; i < enqState.length; i++) {
     data1.push({

@@ -88,7 +88,7 @@ export const couponSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.createdCoupon = action.payload;
+        state.coupons = action.payload;
       })
       .addCase(createCoupon.rejected, (state, action) => {
         state.isLoading = false;
@@ -103,7 +103,7 @@ export const couponSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.deletedCoupon = action.payload;
+        state.coupons = action.payload;
       })
       .addCase(deleteACoupon.rejected, (state, action) => {
         state.isLoading = false;

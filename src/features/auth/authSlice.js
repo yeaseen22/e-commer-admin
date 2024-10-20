@@ -7,6 +7,7 @@ const getUserfromLocalStorage = localStorage.getItem("user")
 const initialState = {
   user: getUserfromLocalStorage,
   orders: [],
+  orderbyuser:[],
   isError: false,
   isLoading: false,
   isSuccess: false,
@@ -81,6 +82,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.orders = action.payload;
+        state.orderbyuser = action.payload;
         state.message = "success";
       })
       .addCase(getOrdersData.rejected, (state, action) => {
