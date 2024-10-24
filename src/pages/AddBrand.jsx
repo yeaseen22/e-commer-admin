@@ -21,6 +21,7 @@ const Addbrand = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const getBrandId = location.pathname.split("/")[3];
+  console.log(location.pathname.split('/'))
   const newBrand = useSelector((state) => state.brand);
   const {
     isSuccess,
@@ -30,6 +31,7 @@ const Addbrand = () => {
     brandName,
     updatedBrand,
   } = newBrand;
+
   useEffect(() => {
     if (getBrandId !== undefined) {
       dispatch(getABrand(getBrandId));
@@ -38,19 +40,22 @@ const Addbrand = () => {
     }
   }, [getBrandId]);
 
+
   useEffect(() => {
     if (isSuccess && createdBrand) {
       toast.success("Brand Added Successfullly!");
     }
     if (isSuccess && updatedBrand) {
       toast.success("Brand Updated Successfullly!");
-      navigate("/admin/list-brand");
+      navigate("/admin/brand-list");
     }
 
     if (isError) {
       toast.error("Something Went Wrong!");
     }
   }, [isSuccess, isError, isLoading]);
+
+  
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {

@@ -1,51 +1,4 @@
-// import React from 'react';
-// import { Table } from "antd";
 
-
-// const columns = [
-//     {
-//         title: "SNo",
-//         dataIndex: "key",
-//     },
-//     {
-//         title: "Title",
-//         dataIndex: "name",
-//     },
-//     {
-//         title: "Product",
-//         dataIndex: "product",
-//     },
-//     {
-//         title: "Staus",
-//         dataIndex: "staus",
-//     },
-// ];
-
-// const data1 = [];
-// for (let i = 0; i < 46; i++) {
-//     data1.push({
-//         key: i,
-//         name: `Edward King ${i}`,
-//         product: 32,
-//         staus: `London, Park Lane no. ${i}`,
-//     });
-// }
-// const ColorList = () => {
-//     return (
-//         <div>
-//             <h3 className="mb-4 title">Customers</h3>
-//             <div>
-//                 <Table columns={columns} dataSource={data1} />
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default ColorList;
-
-
-
-// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import { Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
@@ -54,6 +7,7 @@ import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import CustomModal from "../components/CustomModal";
+import { resetState } from "../features/pcategory/pcategorySlice";
 
 const columns = [
   {
@@ -81,10 +35,13 @@ const Colorlist = () => {
   const hideModal = () => {
     setOpen(false);
   };
+
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(resetState())
     dispatch(getColors());
   }, []);
+
   const colorState = useSelector((state) => state.color.colors);
   const data1 = [];
   for (let i = 0; i < colorState.length; i++) {
@@ -109,6 +66,7 @@ const Colorlist = () => {
       ),
     });
   }
+
   const deleteColor = (e) => {
     dispatch(deleteAColor(e));
 

@@ -4,7 +4,7 @@ import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteACoupon, getAllCoupon } from "../features/coupon/couponSlice";
+import { deleteACoupon, getAllCoupon,resetState } from "../features/coupon/couponSlice";
 import CustomModal from "../components/CustomModal";
 
 const columns = [
@@ -47,9 +47,12 @@ const Couponlist = () => {
   };
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(resetState());
     dispatch(getAllCoupon());
   }, []);
   const couponState = useSelector((state) => state.coupon.coupons);
+  console.log(couponState);
+  
   const data1 = [];
   for (let i = 0; i < couponState.length; i++) {
     data1.push({

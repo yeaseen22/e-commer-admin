@@ -64,6 +64,7 @@ const Addcolor = () => {
     updatedColor,
     colorName,
   } = newColor;
+
   useEffect(() => {
     if (getColorId !== undefined) {
       dispatch(getAColor(getColorId));
@@ -71,18 +72,22 @@ const Addcolor = () => {
       dispatch(resetState());
     }
   }, [getColorId]);
+
+
   useEffect(() => {
     if (isSuccess && createdColor) {
       toast.success("Color Added Successfullly!");
     }
     if (isSuccess && updatedColor) {
       toast.success("Color Updated Successfullly!");
-      navigate("/admin/list-color");
+      navigate("/admin/color-list");
     }
     if (isError) {
       toast.error("Something Went Wrong!");
     }
-  }, [isSuccess, isError, isLoading, createdColor]);
+  }, [isSuccess, isError, isLoading]);
+
+
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -117,6 +122,7 @@ const Addcolor = () => {
             onBlr={formik.handleBlur("title")}
             val={formik.values.title}
             id="color"
+            name="title"
           />
           <div className="error">
             {formik.touched.title && formik.errors.title}
