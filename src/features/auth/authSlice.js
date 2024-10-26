@@ -39,7 +39,7 @@ export const getOrdersData = createAsyncThunk(
     }
   }
 );
-console.log('order state', authService.getOrders());
+// console.log('order state', authService.getOrders());
 
 export const getOrderByUser = createAsyncThunk(
   "order/get-order",
