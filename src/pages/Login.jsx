@@ -1,46 +1,4 @@
-// import React from 'react';
-// import CustomInput from '../components/CustomInput';
-// import { Link } from 'react-router-dom';
 
-// const Login = () => {
-//     return (
-//         <div className="py-5" style={{ background: "#ffd333", minHeight: "100vh" }}>
-//             <div className="my-5 w-25 rounded-3 bg-white mx-auto p-4">
-//                 <h3 className='text-center title'>Login</h3>
-//                 <p className='text-center'>Login to your account to continue</p>
-//                 <form action="">
-
-//                     <CustomInput type='text' label='Enter Email' id='email' />
-
-//                     <CustomInput type='password' label='Enter Password' id='pass' />
-//                     <div className="mb-3 text-end">
-//                         <Link to='forgot-password' >Forgot Password?</Link>
-//                     </div>
-
-//                     <div className="mt-3">
-//                         <Link
-//                             to='/admin'
-//                             className="btn border-0 px-3 py-2 text-white fw-bold w-100 text-center text-decoration-none fs-5"
-//                             style={{ background: "#ffd333" }}
-//                             type='submit'
-//                         >
-//                             Login
-//                         </Link>
-//                     </div>
-
-//                 </form>
-
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default Login;
-
-
-
-
-// eslint-disable-next-line no-unused-vars
 import React, { useEffect } from "react";
 import CustomInput from "../components/CustomInput";
 import { Link, useNavigate } from "react-router-dom";
@@ -69,15 +27,15 @@ const Login = () => {
       dispatch(login(values));
     },
   });
-  const authState = useSelector((state) => state);
+  const authState = useSelector((state) => state.auth);
 
-  const { user, isError, isSuccess, isLoading, message } = authState.auth;
+  const { user, isError, isSuccess, isLoading, message } = authState;
 
   useEffect(() => {
     if (isSuccess) {
-      navigate("admin");
+      navigate("/admin");
     } else {
-      navigate("");
+      navigate("/");
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, isError, isSuccess, isLoading]);
@@ -119,11 +77,11 @@ const Login = () => {
           <div className="error mt-2">
             {formik.touched.password && formik.errors.password}
           </div>
-          <div className="mb-3 text-end">
+          {/* <div className="mb-3 text-end">
             <Link to="forgot-password" className="">
               Forgot Password?
             </Link>
-          </div>
+          </div> */}
           <button
             className="border-0 px-3 py-2 text-white fw-bold w-100 text-center text-decoration-none fs-5"
             style={{ background: "#ffd333" }}

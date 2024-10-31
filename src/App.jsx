@@ -26,6 +26,8 @@ import ViewEnq from './pages/ViewEnq'
 import ViewOrder from './pages/ViewOrder'
 import Coupon from './pages/AddCoupon'
 import CouponList from './pages/CouponList'
+import { OpenRoute } from './routing/OpenRoute'
+import { PrivateRoute } from './routing/PrivateRoute'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -33,10 +35,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Login />} />
+        <Route path='/' element={<OpenRoute><Login /></OpenRoute>} />
         <Route path='/reset-password' element={<ResetPassword />} />
         <Route path='/forgot-password' element={<ForgotPassword />} />
-        <Route path='/admin' element={<MainLayout />}>
+        <Route path='/admin' element={<PrivateRoute><MainLayout /></PrivateRoute>}>
           <Route index element={<DashBoard />} />
           <Route path='enquiries' element={<Enquiries />} />
           <Route path="enquiries/:id" element={<ViewEnq />} />
